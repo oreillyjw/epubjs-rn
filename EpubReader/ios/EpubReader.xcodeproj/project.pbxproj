@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -14,7 +15,6 @@
 		00E356F31AD99517003FC87E /* EpubReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EpubReaderTests.m */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
-		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -36,6 +36,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* EpubReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EpubReaderTests.m */; };
 		33CB2733A54842E48502287F /* libRNZipArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F026CD499134C248C8BDB93 /* libRNZipArchive.a */; };
 		380CAC74DFD0401B80EAD533 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBFB47091FA429994C7020E /* libRNFS.a */; };
+		3C330A507DD54A699D6E6B65 /* libRNCWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9670AF470644751A20A94A5 /* libRNCWebView.a */; };
 		52E82985CC874627AF336AA1 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F0C27B6054784905DC3F9 /* Foundation.ttf */; };
 		53112BD8F30B433E9511C0CC /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F07CEBC8A82347B0AE5F28BD /* FontAwesome.ttf */; };
 		531CD0C6EE904012909BD50D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54A20F782E9247E3A05E984C /* SimpleLineIcons.ttf */; };
@@ -46,6 +47,8 @@
 		78F64E22B26A4F518846EA40 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E76E2F6393C4AE992421BC6 /* Feather.ttf */; };
 		7DE331371B9E49CF9575B751 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 869E4BF2C42C475CBA9B67A4 /* Entypo.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8C504DED21DFD42D00DD529B /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
+		8C504DF021DFD4AD00DD529B /* libfishhook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6841FA4F8DC00B85C8A /* libfishhook.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B51CA58B90E84B56A8A9AC97 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E162D8B8DCE46209147AEA2 /* libRNVectorIcons.a */; };
 		B6BD35B2B1F049A3B045E01A /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5531CB49561F49EC8CE8DF26 /* EvilIcons.ttf */; };
@@ -54,7 +57,6 @@
 		D75C61143B89410FBED29C91 /* libFPStaticServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44DD5E4173A54CC08339760E /* libFPStaticServer.a */; };
 		E249B3E266104EA9BA0AB22F /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AE7BF87D16E469B908945CF /* MaterialCommunityIcons.ttf */; };
 		E87A31439DAC4DACBF5BBD6C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 224E4215DF2C46858CF465A1 /* Ionicons.ttf */; };
-		E95149F951154B84AE4DD30E /* libRCTWKWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2371BEC07EB4F9B8170CA07 /* libRCTWKWebView.a */; };
 		FE506D12C11E4583935C7526 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FF3C6D360344C8B88610FDF /* Octicons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -395,6 +397,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		8C504E5F21DFD7FC00DD529B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0DFEB8B04204F459FCDD972 /* RNCWebView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNCWebView;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -455,9 +464,11 @@
 		B2371BEC07EB4F9B8170CA07 /* libRCTWKWebView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTWKWebView.a; sourceTree = "<group>"; };
 		C15CFC63C27E4EA4AE586039 /* libRCTOrientation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOrientation.a; sourceTree = "<group>"; };
 		C71D31B74B604559A1754D63 /* RNZipArchive.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNZipArchive.xcodeproj; path = "../node_modules/react-native-zip-archive/ios/RNZipArchive.xcodeproj"; sourceTree = "<group>"; };
+		D9670AF470644751A20A94A5 /* libRNCWebView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCWebView.a; sourceTree = "<group>"; };
 		DCFFAEFE7F1A4E31BECAED74 /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		E25CB7A72EF54BFBB406CD1D /* FPStaticServer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = FPStaticServer.xcodeproj; path = "../node_modules/react-native-static-server/ios/FPStaticServer.xcodeproj"; sourceTree = "<group>"; };
 		F07CEBC8A82347B0AE5F28BD /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		F0DFEB8B04204F459FCDD972 /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCWebView.xcodeproj; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; };
 		FC9E58AC96A24508B2229B4C /* EpubReader.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = EpubReader.xcodeproj; path = "../node_modules/epubjs-rn/EpubReader/ios/EpubReader.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -474,6 +485,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C504DF021DFD4AD00DD529B /* libfishhook.a in Frameworks */,
+				8C504DED21DFD42D00DD529B /* libRCTWebSocket.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -486,7 +499,6 @@
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
-				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				74FCF485529643758B39708F /* libRCTActionSheet.a in Frameworks */,
 				D1792B6D6F4D4CD08A0D2DC8 /* libRNFetchBlob.a in Frameworks */,
 				380CAC74DFD0401B80EAD533 /* libRNFS.a in Frameworks */,
@@ -495,7 +507,7 @@
 				B51CA58B90E84B56A8A9AC97 /* libRNVectorIcons.a in Frameworks */,
 				33CB2733A54842E48502287F /* libRNZipArchive.a in Frameworks */,
 				298BD42E1D2A4C8FB24A36E4 /* libz.tbd in Frameworks */,
-				E95149F951154B84AE4DD30E /* libRCTWKWebView.a in Frameworks */,
+				3C330A507DD54A699D6E6B65 /* libRNCWebView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +672,7 @@
 				8E162D8B8DCE46209147AEA2 /* libRNVectorIcons.a */,
 				2F026CD499134C248C8BDB93 /* libRNZipArchive.a */,
 				B2371BEC07EB4F9B8170CA07 /* libRCTWKWebView.a */,
+				D9670AF470644751A20A94A5 /* libRNCWebView.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -771,6 +784,7 @@
 				6E5CCCE2539E48E7B988F746 /* RNVectorIcons.xcodeproj */,
 				C71D31B74B604559A1754D63 /* RNZipArchive.xcodeproj */,
 				2389CBAC5632459FA4C82B53 /* RCTWKWebView.xcodeproj */,
+				F0DFEB8B04204F459FCDD972 /* RNCWebView.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -807,6 +821,14 @@
 				00E356EE1AD99517003FC87E /* EpubReaderTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* EpubReader-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* EpubReader-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C504E5C21DFD7FC00DD529B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C504E6021DFD7FC00DD529B /* libRNCWebView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -927,7 +949,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = S9PLTSRA52;
+						DevelopmentTeam = YZTG2R9X6L;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1015,6 +1037,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 8C504E5C21DFD7FC00DD529B /* Products */;
+					ProjectRef = F0DFEB8B04204F459FCDD972 /* RNCWebView.xcodeproj */;
 				},
 				{
 					ProductGroup = 33370332203CBF25007C282A /* Products */;
@@ -1366,6 +1392,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8C504E6021DFD7FC00DD529B /* libRNCWebView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCWebView.a;
+			remoteRef = 8C504E5F21DFD7FC00DD529B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1532,6 +1565,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-zip-archive/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView",
+					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = EpubReaderTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1564,6 +1598,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-zip-archive/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView",
+					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = EpubReaderTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1587,7 +1622,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = S9PLTSRA52;
+				DEVELOPMENT_TEAM = YZTG2R9X6L;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/epubjs-rn/EpubReader/node_modules",
@@ -1598,6 +1633,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-zip-archive/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView",
+					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = EpubReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1617,7 +1653,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S9PLTSRA52;
+				DEVELOPMENT_TEAM = YZTG2R9X6L;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/epubjs-rn/EpubReader/node_modules",
@@ -1628,6 +1664,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-zip-archive/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView",
+					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = EpubReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1664,6 +1701,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-zip-archive/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView",
+					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = "EpubReader-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1705,6 +1743,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-zip-archive/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-wkwebview-reborn/ios/RCTWKWebView",
+					"$(SRCROOT)/../node_modules/react-native-webview/ios",
 				);
 				INFOPLIST_FILE = "EpubReader-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

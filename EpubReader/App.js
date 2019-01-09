@@ -6,14 +6,19 @@ import {
   View,
   Animated,
   Modal,
-  StatusBar
+  StatusBar,
+  SafeAreaView
 } from 'react-native';
 
-import { Epub, Streamer } from "epubjs-rn";
+import { Epub, Streamer, Rendition } from "epubjs-rn";
 
 import TopBar from './app/TopBar'
 import BottomBar from './app/BottomBar'
 import Nav from './app/Nav'
+
+const epubCFI = require('./node_modules/epubjs/lib/epubcfi');
+const locationsCFI = require('./node_modules/epubjs/lib/locations');
+import { sprint } from "./node_modules/epubjs/lib/utils/core";
 
 class EpubReader extends Component {
   constructor(props) {
@@ -30,7 +35,7 @@ class EpubReader extends Component {
       showNav: false,
       sliderDisabled: true
     };
-
+    this.epub = undefined;
     this.streamer = new Streamer();
   }
 
@@ -55,13 +60,92 @@ class EpubReader extends Component {
     this.setState({ showBars: !this.state.showBars });
   }
 
+  findQuery(itemObject, _query) {
+    var section = itemObject;
+		var matches = [];
+		var query = _query.toLowerCase();
+		var find = function(node){
+			var text = node.textContent.toLowerCase();
+			var range = locationsCFI.prototype.createRange();
+			var cfi;
+			var pos;
+			var last = -1;
+			var excerpt;
+			var limit = 100;
+
+			while (pos != -1) {
+				// Search for the query
+				pos = text.indexOf(query, last + 1);
+				if (pos != -1) {
+					// We found it! Generate a CFI
+          range = locationsCFI.prototype.createRange();
+
+          range.startContainer = node;
+					range.startOffset = pos;
+          range.endContainer = node;
+          range.endOffset = pos + query.length;
+
+					cfi = section.cfiFromRange(range);
+
+					// Generate the excerpt
+					if (node.textContent.length < limit) {
+						// excerpt = node.textContent;
+            excerpt = "..." + node.textContent.substring(0,pos)
+                        + "<span class='highlight'>"
+                            + node.textContent.substring(pos,pos+query.length)
+                        + "</span>"
+                      + node.textContent.substring(pos+query.length, node.textContent.length) + "...";
+					}
+					else {
+            excerpt = "..." + node.textContent.substring(pos - limit/2,pos)
+                        + "<span class='highlight'>"
+                            + node.textContent.substring(pos,pos+query.length)
+                        + "</span>"
+                      + node.textContent.substring(pos+query.length, pos + limit/2) + "...";
+					}
+
+					// Add the CFI to the matches list
+					matches.push({
+						cfi: new epubCFI(cfi),
+						excerpt: excerpt
+					});
+				}
+
+				last = pos;
+			}
+		};
+
+		sprint(itemObject.document, function(node) {
+			find(node);
+		});
+
+		return matches;
+  }
+
+  doSearch(q) {
+    return Promise.all( this.state.book.spine.spineItems
+          .map(item => item.load(this.state.book.load.bind(this.state.book))
+                  .then(section => {
+
+                    return this.findQuery(item, q);
+                  })
+                  .catch(err => err)
+                  .then(res => {
+                    item.unload.bind(item)
+                    return res;
+                  }))
+    ).then(results => Promise.resolve([].concat.apply([], results)));
+  }
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <StatusBar hidden={!this.state.showBars}/>
         <Epub style={styles.reader}
-              ref="epub"
+              ref={(pub) => {
+                this.epub = pub;
+                console.log(this.epub)
+              }}
               //src={"https://s3.amazonaws.com/epubjs/books/moby-dick.epub"}
               src={this.state.src}
               flow={this.state.flow}
@@ -79,10 +163,17 @@ class EpubReader extends Component {
                 // console.log("Table of Contents", book.toc)
                 this.setState({
                   title : book.package.metadata.title,
-                  toc: book.navigation.toc
+                  toc: book.navigation.toc,
+                  book: book
                 });
+                // this.doSearch("moby").then(res => {
+                //   console.log("result");
+                //   console.log(res);
+                // }
+                // );
               }}
               onPress={(cfi, position, rendition)=> {
+                console.log();
                 this.toggleBars();
                 console.log("press", cfi);
               }}
@@ -97,6 +188,9 @@ class EpubReader extends Component {
               }}
               onSelected={(cfiRange, rendition) => {
                 console.log("selected", cfiRange)
+                this.state.book.getRange(cfiRange).then(function(range) {
+                  console.log(`Text: ${range.endContainer.data.substring(range.startOffset, range.endOffset)}`);
+                });
                 // Add marker
                 rendition.highlight(cfiRange, {});
               }}
@@ -120,7 +214,7 @@ class EpubReader extends Component {
                 console.log("EPUBJS-Webview", message);
               }}
             />
-            <View
+            <SafeAreaView
               style={[styles.bar, { top:0 }]}>
               <TopBar
                 title={this.state.title}
@@ -136,8 +230,8 @@ class EpubReader extends Component {
                   }
                 }
                />
-            </View>
-            <View
+            </SafeAreaView>
+            <SafeAreaView
               style={[styles.bar, { bottom:0 }]}>
               <BottomBar
                 disabled= {this.state.sliderDisabled}
@@ -148,16 +242,16 @@ class EpubReader extends Component {
                     this.setState({location: value.toFixed(6)})
                   }
                 }/>
-            </View>
-            <View>
+            </SafeAreaView>
+            <SafeAreaView>
               <Nav ref={(nav) => this._nav = nav }
                 display={(loc) => {
                   this.setState({ location: loc });
                 }}
                 toc={this.state.toc}
               />
-            </View>
-      </View>
+            </SafeAreaView>
+      </SafeAreaView>
 
     );
   }

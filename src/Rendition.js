@@ -8,11 +8,12 @@ import {
   Dimensions,
   Platform,
   AppState,
-  WebView,
+  // WebView,
   TouchableOpacity
 } from "react-native";
 
-import WKWebView from 'react-native-wkwebview-reborn';
+// import WKWebView from 'react-native-wkwebview-reborn';
+import { WebView } from "react-native-webview";
 
 import EventEmitter from 'event-emitter'
 
@@ -50,7 +51,7 @@ const EMBEDDED_HTML = `
       }
     }
   </style>
-</head><body></body></html>
+</head><body><div>test</div></body></html>
 `;
 
 class Rendition extends Component {
@@ -273,8 +274,8 @@ class Rendition extends Component {
   }
 
   postMessage(str) {
-    if (this.refs.webviewbridge) {
-      return this.refs.webviewbridge.postMessage(str);
+    if (this.webviewbridge) {
+      return this.webviewbridge.postMessage(str);
     }
   }
 
@@ -285,14 +286,15 @@ class Rendition extends Component {
       promise: promiseId
     });
 
-    if (!this.refs.webviewbridge) {
+    if (!this.webviewbridge) {
       return;
     }
-
-    this.refs.webviewbridge.postMessage(str);
+    console.log(str);
+    this.webviewbridge.postMessage(str);
   }
 
   _onWebViewLoaded() {
+    console.log("on webview loaded")
     this._webviewLoaded = true;
     if (this.props.url) {
       this.load(this.props.url);
@@ -300,7 +302,10 @@ class Rendition extends Component {
   }
 
   _onBridgeMessage(e) {
+    console.log("Bridge")
     var msg = e.nativeEvent.data;
+    console.log(msg)
+
     var decoded;
     if (typeof msg === "string") {
       decoded = JSON.parse(msg);
@@ -308,7 +313,8 @@ class Rendition extends Component {
       decoded = msg; // webkit may pass parsed objects
     }
     var p;
-
+    console.log(`Bridge Message:`)
+    console.log(decoded)
     switch (decoded.method) {
       case "log": {
         console.log.apply(console.log, [decoded.value]);
@@ -411,7 +417,8 @@ class Rendition extends Component {
   }
 
   render() {
-    const WebViewer = (Platform.OS === 'ios') ? WKWebView : WebView;
+    // const WebViewer = (Platform.OS === 'ios') ? WKWebView : WebView;
+    const WebViewer = WebView;
 
     let loader = (
       <TouchableOpacity onPress={() => this.props.onPress('')} style={styles.loadScreen}>
@@ -432,33 +439,43 @@ class Rendition extends Component {
     }
 
     return (
-      <View ref="framer" style={[styles.container, {
+      <View ref={(view) => {
+              console.log(`View: ${view}`)
+            }}
+            style={[styles.container, {
           maxWidth: this.props.width, maxHeight: this.props.height,
           minWidth: this.props.width, minHeight: this.props.height
         }]}>
         <WebViewer
-          ref="webviewbridge"
+          ref={(view) => {
+            if(!this.webviewbridge){
+              console.log(`WebView: ${view}`)
+              this.webviewbridge = view;
+            }
+          }}
           source={{html: EMBEDDED_HTML, baseUrl: this.props.url}}
           style={[styles.manager, {
             backgroundColor: this.props.backgroundColor || "#FFFFFF"
           }]}
+          useWebKit={false}
           scalesPageToFit={false}
           bounces={false}
           javaScriptEnabled={true}
           scrollEnabled={true}
           pagingEnabled={this.props.flow === "paginated"}
-          // onLoadEnd={this._onWebViewLoaded.bind(this)}
-          onMessage={this._onBridgeMessage.bind(this)}
+          onMessage={(event) => this._onBridgeMessage(event)}
           contentInsetAdjustmentBehavior="never"
           contentInset={{top: 0}}
           automaticallyAdjustContentInsets={false}
+          allowFileAccess={true}
+          originWhitelist={["*"]}
         />
         {!this.state.loaded ? loader : null}
       </View>
     );
   }
 }
-
+//
 const styles = StyleSheet.create({
   container: {
     flex: 1,
