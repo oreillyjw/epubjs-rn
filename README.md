@@ -79,7 +79,7 @@ streamer.start("8899")
 Running the example app
 -------------------------
 
-Install with yarn. (Don't use NPM unless you flatten the packages after install)
+#### Installing with yarn:
 
 ```bash
 cd EpubReader/
@@ -90,6 +90,26 @@ Then start the iOS or Android App
 
 ```bash
 yarn start
+react-native run-ios
+react-native run-android
+```
+
+#### Installing with NPM:
+
+Install [flatten-packages](https://www.npmjs.com/package/flatten-packages) and react-native-cli:
+```bash
+npm i -g flatten-packages react-native-cli
+```
+
+Then:
+```bash
+cd EpubReader/
+npm i
+react-native link
+```
+Then start the iOS or Android App
+
+```bash
 react-native run-ios
 react-native run-android
 ```
