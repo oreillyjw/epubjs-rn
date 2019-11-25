@@ -5,10 +5,10 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "preinstall-old": "npm pack ../ && npm run move",
-    "move": "mv epubjs-rn-*.tgz epubjs-rn.r16.tgz",
-    "preinstall": "cd .. && npm install && npm run build && cd EpubReader && npm pack ../ && npm run move",
-    "postinstall": "rm epubjs-rn.r16.tgz && flatten-packages"
+    "preinstall": "npm pack ../ && npm run move",
+    "move": "mv epubjs-rn-*.tgz epubjs-rn.r17.tgz",
+    "preinstall-new": "cd .. && npm install && npm run build && cd EpubReader && npm pack ../ && npm run move",
+    "postinstall": "rm epubjs-rn.r17.tgz && flatten-packages"
   },
   "dependencies": {
     "@react-native-community/slider": "^1.1.4",
