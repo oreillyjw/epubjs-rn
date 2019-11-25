@@ -7,7 +7,8 @@ import {
   Dimensions,
   Platform,
   AppState,
-  TouchableOpacity
+  TouchableOpacity,
+  Linking
 } from "react-native";
 
 import { WebView } from 'react-native-webview';
@@ -47,6 +48,7 @@ const EMBEDDED_HTML = `
   </style>
 </head><body></body></html>
 `;
+const blockedDomainsArray = [ "amazon.com", "google.com" , "apple.com", "barnesandnoble.com", "kobobooks.com"];
 
 class Rendition extends Component {
 
@@ -409,6 +411,49 @@ class Rendition extends Component {
     this.props.onDisplayed && this.props.onDisplayed();
   }
 
+  _handleNavigationStateChange = newNavState => {
+    let { url } = newNavState;
+    if (url !== this.props.url) {
+      console.log('Should open in default external web browser.');
+      Linking.canOpenURL(url)
+        .then((supported) => {
+          if (!supported) {
+            console.log("Can't handle url: " + url);
+          } else {
+            if(this.linkIsBlacklisted(url.toLowerCase())) {
+              // Links to a blacklisted domain; do not open
+              // TODO: Decide whether to show an alert
+              this.refs.webviewbridge.stopLoading();
+              return;
+            } else {
+              // The domain is allowed; Open it in the default web browser
+              this.refs.webviewbridge.stopLoading();
+              return Linking.openURL(url);
+            }
+          }
+        })
+        .catch((err) => console.error('An error occurred while opening the webpage', err));
+    }
+  }
+
+  linkIsBlacklisted(url) {
+    let domain = this.getUrlDomain(url);
+    if(blockedDomainsArray.includes(domain)) {
+      return true;
+    }
+    return false;
+  }
+
+  getUrlDomain(url) {
+    // Remove protocol header and path after TLD
+    let urlPieces = url.replace('http://','').replace('https://','').split(/[/?#]/);
+    let hostPieces = urlPieces[0].split('.');
+    
+    // Remove subdomain and only keep domain name and TLD
+    let domain = hostPieces[hostPieces.length-2] + '.' + hostPieces[hostPieces.length-1];
+    return domain;
+  }
+
   render() {
     let loader = (
       <TouchableOpacity onPress={() => this.props.onPress('')} style={styles.loadScreen}>
@@ -449,6 +494,7 @@ class Rendition extends Component {
           automaticallyAdjustContentInsets={false}
           originWhitelist={['*']}
           allowsLinkPreview={false}
+          onNavigationStateChange={this._handleNavigationStateChange}
         />
         {!this.state.loaded ? loader : null}
       </View>
